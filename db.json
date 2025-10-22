@@ -32,6 +32,17 @@
       "time": "11:00",
       "petsAllowed": false,
       "organizer": "Carey Wales"
+    },
+    {
+      "id": 1234567,
+      "category": "education",
+      "title": "Coding Workshop for Kids",
+      "description": "Learn the basics of programming in a fun and interactive way.",
+      "location": "Tech Hub",
+      "date": "September 15, 2022",
+      "time": "14:00",
+      "petsAllowed": false,
+      "organizer": "Code Master"
     }
   ]
 }

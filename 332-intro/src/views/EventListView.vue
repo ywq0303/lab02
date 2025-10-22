@@ -42,8 +42,26 @@ const events = ref<Event[]>([
 <template>
   <h1>Events For Good</h1>
   <!-- new element -->
-  <div class="events">
+  
+  <!-- 加载状态 -->
+  <div v-if="loading" class="loading">
+    <p>Loading events...</p>
+  </div>
+  
+  <!-- 错误状态 -->
+  <div v-else-if="error" class="error">
+    <p>Error: {{ error }}</p>
+  </div>
+  
+  <!-- 空状态 -->
+  <div v-else-if="events.length === 0" class="no-events">
+    <p>No events found.</p>
+  </div>
+  
+  <!-- 事件列表 -->
+  <div v-else class="events">
     <EventCard v-for="event in events" :key="event.id" :event="event" />
+    <p class="event-count">Total events: {{ events.length }}</p>
   </div>
 </template>
 
@@ -52,5 +70,34 @@ const events = ref<Event[]>([
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.loading, .error, .no-events {
+  text-align: center;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+}
+
+.loading {
+  background-color: #f8f9fa;
+  color: #6c757d;
+}
+
+.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.no-events {
+  background-color: #e9ecef;
+  color: #495057;
+}
+
+.event-count {
+  margin-top: 20px;
+  font-style: italic;
+  color: #666;
 }
 </style>
